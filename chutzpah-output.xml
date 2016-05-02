@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites>
-  <testsuite name="D:\Projects\JadeProject\JadeApp.Tests\JSTests\tests.js" tests="3" failures="0" time="0.021">
-    <testcase name="calculator ctrl:checks default insurance cover" time="0.014" />
-    <testcase name="calculator ctrl:checks min insurance cover" time="0.002" />
-    <testcase name="calculator ctrl:checks max insurance cover" time="0.001" />
-  </testsuite>
-</testsuites>

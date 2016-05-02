@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Usage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <!-- msbuild /t:Build -->
+  <!-- msbuild /t:Release /p:AppVersion=1.01.00001.00001_090101 -->
+  <!-- msbuild /t:AllWeb -->
+  <!-- msbuild /t:AllSvr -->
+  <!-- msbuild /t:All -->
+  
+  <PropertyGroup>
+    <ConfigToBuild>Release</ConfigToBuild>
+  </PropertyGroup>
+
+  <Target Name="Build" DependsOnTargets="Compile; " />
+  <Target Name="Test" DependsOnTargets="Compile; RunJSUnitTests; " /> 
+
+  <Target Name="Compile">
+    <MSBuild Projects="JadeApp.sln" Targets="Build" Properties="Configuration=$(ConfigToBuild);" />
+
+    <Message Text="Done Build" />
+  </Target>
+  
+  <Target Name="RunJSUnitTests">
+    <Exec Command="&quot;$(MSBuildProjectDirectory)\packages\Chutzpah.4.2.2\tools\chutzpah.console.exe&quot; $(MSBuildProjectDirectory)\JadeApp.Tests\JSTests /silent /junit $(MSBuildProjectDirectory)\chutzpah-output.xml" WorkingDirectory="$(MSBuildProjectDirectory)\packages\Chutzpah.4.2.2\tools\" />
+
+    <Message Text="$(TASK_BREAK)" />
+  </Target>
+</Project>

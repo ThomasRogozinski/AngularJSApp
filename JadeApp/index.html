@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html ng-app="jadeApp">
+<head>
+    <title>Jade sample Angular App</title>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="app/scss/angular.rangeSlider.css" rel="stylesheet">
+</head>
+<body style="padding-bottom: 50px;">
+    <div class="container" ng-controller="CalculatorController">
+        <div class="container" ng-controller="RangeSliderController">
+            <h1>Life Insurance Cover Calculator</h1>
+            <br /><br />
+            <div class="row">
+                <div class="span6">
+                    <h5>Monthly rent or amount remaining on mortgage:</h5>
+                    <p><strong>{{calcData.rent | currency: "$" : 0}}</strong></p>
+                    <div range-slider=range-slider min="initData.rentMin" max="initData.rentMax" step="initData.rentStep" model-max="calcData.rent" pin-handle="min"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">
+                    <h5>Number of children:</h5>
+                    <p><strong>{{calcData.kids}}</strong></p>
+                    <div range-slider=range-slider min="initData.kidsMin" max="initData.kidsMax" step="initData.kidsStep" model-max="calcData.kids" pin-handle="min"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                    <h5>Outstanding debt:</h5>
+                    <p><strong>{{calcData.debt | currency: "$" : 0}}</strong></p>
+                    <div range-slider=range-slider min="initData.debtMin" max="initData.debtMax" step="initData.debtStep" model-max="calcData.debt" pin-handle="min"></div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <br /><br />
+        <div class="container">
+            <input type="button" value="Calculate" ng-click="CalcCover()" />
+            <h4>Insurance Cover: {{cover | currency: "$" : 0}}</h4>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/directives/rangeSlider.js"></script>
+    <script src="app/services/calculatorService.js"></script>
+    <script src="app/controllers/rangeSliderController.js"></script>
+    <script src="app/controllers/calculatorController.js"></script>
+</body>
+</html>
